@@ -1,0 +1,133 @@
+/* XOMOX – schlankes Stylesheet (US #200). Abgeleitet vom Logo: weiss, Rot #97040C als Akzent,
+   klare Grotesk-Schrift. Keine Frameworks, keine externen Schriften. */
+:root {
+    --red: #97040c;
+    --ink: #1d1d1f;
+    --muted: #5f6368;
+    --line: #e4e4e7;
+    --soft: #f7f7f8;
+    --wrap: 68rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    background: #fff;
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    border-top: 4px solid var(--red);
+}
+
+img, svg { max-width: 100%; }
+
+a { color: var(--red); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+.wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.skip {
+    position: absolute;
+    left: -999px;
+    top: 0.5rem;
+    background: #fff;
+    padding: 0.5rem 1rem;
+}
+.skip:focus { left: 0.5rem; z-index: 10; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.logo { display: block; line-height: 0; }
+.logo img { width: 56px; height: 56px; }
+.nav { flex: 1 1 auto; }
+.nav ul, .lang, .footer-nav ul, .social {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+}
+.nav a, .lang a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+.nav a:hover, .lang a:hover { border-bottom-color: var(--line); }
+.nav a[aria-current="page"] { border-bottom-color: var(--red); }
+.lang a { color: var(--muted); font-size: 0.9375rem; }
+
+/* Inhalt */
+main { padding-bottom: 3rem; }
+h1, h2, h3 { line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
+h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin: 2.5rem 0 1rem; }
+h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+h3 { font-size: 1.1875rem; margin: 1.75rem 0 0.5rem; }
+.prose { max-width: 46rem; margin-left: auto; margin-right: auto; }
+.prose > :first-child { margin-top: 2.5rem; }
+.prose h1:first-child { margin-top: 2.5rem; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li + li { margin-top: 0.25rem; }
+.prose table { border-collapse: collapse; width: 100%; }
+.prose th, .prose td { text-align: left; padding: 0.5rem 0.75rem 0.5rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+.prose blockquote { margin: 1.5rem 0; padding: 0.25rem 0 0.25rem 1rem; border-left: 3px solid var(--red); color: var(--muted); }
+.note { color: var(--muted); font-size: 0.9375rem; }
+
+/* Startseite */
+.hero { background: var(--soft); border-bottom: 1px solid var(--line); }
+.hero .wrap { max-width: 46rem; padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.hero h1 { margin-top: 0; font-size: clamp(2rem, 5vw, 3rem); }
+.kicker {
+    margin: 0 0 0.75rem;
+    color: var(--red);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.lead { font-size: 1.25rem; color: var(--muted); margin: 0 0 1.75rem; }
+.button {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2px;
+}
+.button:hover { background: #7a030a; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); background: var(--soft); font-size: 0.9375rem; }
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+.footer-nav a { color: var(--ink); }
+.social a { color: var(--muted); display: inline-block; line-height: 0; padding: 0.25rem; }
+.social a:hover { color: var(--red); }
+.icon { width: 1.375rem; height: 1.375rem; fill: currentColor; }
+.copyright { color: var(--muted); font-size: 0.875rem; padding-bottom: 2rem; }

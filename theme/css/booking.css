@@ -1,0 +1,222 @@
+/* Terminbuchung (US #209, #216) – nur mit FEATURE_BOOKING im Build. Variablen und Grundstil aus site.css. */
+.bk-page { padding-bottom: 1rem; }
+.bk-intro { margin-left: 0; }
+.bk-panel {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 1.25rem;
+    background: #fff;
+}
+.bk-panel h2 { margin: 0 0 1rem; font-size: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
+.bk-fallback { max-width: 46rem; margin-top: 1.5rem; }
+.bk-fallback h2 { display: block; }
+
+.bk {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1.5rem;
+}
+.bk[hidden] { display: none; }
+.bk-steps { display: grid; gap: 1.25rem; min-width: 0; }
+.bk-summary { position: sticky; top: 1rem; background: var(--soft); }
+.bk-summary dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; }
+.bk-summary dt { color: var(--muted); }
+.bk-summary dd { margin: 0; }
+.bk-summary [hidden] { display: none; }
+.bk-sum-row { display: contents; }
+
+.bk-step {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.9375rem;
+    flex: none;
+}
+
+.bk fieldset { border: 0; margin: 0 0 1rem; padding: 0; min-width: 0; }
+.bk fieldset:last-child { margin-bottom: 0; }
+.bk fieldset[hidden] { display: none; }
+.bk legend { font-weight: 600; padding: 0; margin-bottom: 0.5rem; }
+.bk-choices { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.bk-choice { position: relative; }
+.bk-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.bk-choice span {
+    display: inline-block;
+    min-height: 2.75rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+}
+.bk-choice input:checked + span { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); color: var(--red); font-weight: 600; }
+.bk-choice input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
+
+.bk-week { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.bk-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+.bk-icon:disabled { color: var(--line); cursor: default; }
+.bk-icon:focus-visible, .bk-slot:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+/* Monatskalender (US #216, wie termin.html auf wiens.hamburg) */
+.bk-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.3rem;
+    min-height: 6rem;
+    transition: opacity 0.15s ease;
+}
+.bk-calendar.bk-loading { opacity: 0.45; }
+.bk-cal-head { padding-bottom: 0.2rem; color: var(--muted); font-size: 0.8125rem; font-weight: 600; text-align: center; }
+.bk-cal-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    min-height: 3rem;
+    padding: 0.25rem 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.9375rem;
+    line-height: 1;
+}
+button.bk-cal-day { cursor: pointer; }
+.bk-cal-day.bk-is-free { border-color: var(--line); background: #fff; font-weight: 700; }
+.bk-cal-day.bk-is-short { border-color: var(--line); border-style: dashed; background: #fff; }
+.bk-cal-day.bk-is-none { color: var(--muted); }
+.bk-cal-day.bk-is-out { color: var(--muted); }
+button.bk-cal-day:hover { border-color: var(--red); }
+.bk-cal-day[aria-pressed="true"] {
+    border-color: var(--red);
+    border-style: solid;
+    box-shadow: inset 0 0 0 1px var(--red);
+    color: var(--red);
+}
+.bk-cal-day:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.bk-cal-dot, .bk-cal-ring {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--red);
+}
+.bk-cal-ring { background: none; border: 1.5px solid var(--red); }
+.bk-cal-short { color: var(--red); font-size: 0.75rem; font-weight: 700; }
+.bk-cal-short::before {
+    content: "";
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-right: 0.15rem;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    vertical-align: 0.05em;
+}
+.bk-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.25rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+.bk-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.bk-legend [hidden] { display: none; }
+.bk-day-slots { margin-top: 1.25rem; }
+.bk-day-slots h3 { margin: 0 0 0.6rem; font-size: 1rem; }
+.bk-shorter { padding: 1rem 1.25rem; border-left: 3px solid var(--red); background: var(--soft); }
+.bk-shorter p { margin: 0 0 0.85rem; }
+
+/* Freie Dauer in Stunden (nur mit Code) */
+.bk-custom { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.75rem; }
+.bk-custom[hidden] { display: none; }
+.bk-custom label { color: var(--muted); }
+.bk-custom .bk-hint { margin: 0; flex-basis: 100%; }
+.bk-custom input {
+    width: 5.5rem;
+    min-height: 2.75rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #c9c9cf;
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+}
+.bk-custom input:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: var(--red); }
+.bk-custom input.bk-active { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); color: var(--red); font-weight: 600; }
+.bk-slot-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr)); gap: 0.5rem; }
+.bk-slot {
+    min-height: 2.75rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+}
+.bk-slot:hover { border-color: var(--red); }
+.bk-slot[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; font-weight: 600; }
+
+.bk-field { margin-bottom: 1rem; }
+.bk-field[hidden] { display: none; }
+.bk-field label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+.bk-field input, .bk-field textarea {
+    width: 100%;
+    font: inherit;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #c9c9cf;
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+}
+.bk-field textarea { min-height: 6rem; resize: vertical; }
+.bk-field input:focus, .bk-field textarea:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: var(--red); }
+.bk-field [aria-invalid="true"] { border-color: var(--red); }
+.bk-error { color: var(--red); margin: 0.25rem 0 0; font-size: 0.9375rem; }
+.bk button.button { border: 0; font: inherit; font-weight: 600; cursor: pointer; min-height: 2.75rem; }
+.bk button.button:disabled { opacity: 0.6; cursor: default; }
+.bk button.button:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+.bk-hint { color: var(--muted); font-size: 0.9375rem; margin: 1rem 0 0; }
+.bk-summary .bk-hint { margin-top: 1rem; }
+.bk-notice { margin: 0; padding: 0.75rem 1rem; background: var(--soft); border-left: 3px solid var(--line); }
+.bk-notice.bk-error { color: var(--ink); border-left-color: var(--red); font-size: inherit; }
+.bk-notice.bk-ok { border-left-color: var(--red); }
+#bk-preview { border-left-color: var(--red); }
+.bk-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@media (max-width: 52rem) {
+    .bk { grid-template-columns: minmax(0, 1fr); }
+    .bk-summary { position: static; }
+}
+@media (max-width: 25rem) {
+    .bk-calendar { gap: 0.15rem; }
+    .bk-cal-day { min-height: 2.75rem; font-size: 0.875rem; }
+}

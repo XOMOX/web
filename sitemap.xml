@@ -73,6 +73,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://xomox.swiss/kontakt.html"/>
   </url>
   <url>
+    <loc>https://xomox.swiss/termin.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://xomox.swiss/termin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xomox.swiss/en/booking.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://xomox.swiss/termin.html"/>
+  </url>
+  <url>
+    <loc>https://xomox.swiss/en/booking.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://xomox.swiss/termin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xomox.swiss/en/booking.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://xomox.swiss/termin.html"/>
+  </url>
+  <url>
     <loc>https://xomox.swiss/ueber-mich.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://xomox.swiss/ueber-mich.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://xomox.swiss/en/about.html"/>
